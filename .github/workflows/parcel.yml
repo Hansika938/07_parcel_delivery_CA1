@@ -25,17 +25,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Install pytest
-        run: 
+      - name: Install dependencies
+        run: |
           pip install pytest
           pip install pytest-cov
-      
-      - name:Run pytest 
-        run :python-m pytest
-      
+
+      - name: Run pytest
+        run: python -m pytest -v
+
       - name: Run tests with coverage
-        run: 
-          pytest --cov=src --cov-report=term-missing
+        run: python -m pytest --cov=src --cov-report=term-missing
   
   
   
