@@ -1,6 +1,6 @@
 import pytest
 
-from Src.parcel_acceptance import is_parcel_accepted
+from src.parcel_acceptance import is_parcel_accepted
 
 
 # Valid test cases
