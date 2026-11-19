@@ -1,5 +1,5 @@
 import pytest
-from src.parcel_fee import delivery_fees
+from src.parcel_fee import delivery_fee
 
 # Valid test cases
 
