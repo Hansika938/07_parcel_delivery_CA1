@@ -60,3 +60,21 @@ def test_negative_length_raises_value_error():
     with pytest.raises(ValueError):
         is_parcel_accepted(100, -1)
 
+# TypeError test cases
+
+def test_string_weight_raises_type_error():
+
+    with pytest.raises(TypeError):
+        is_parcel_accepted("100", 100)
+
+
+def test_float_weight_raises_type_error():
+
+    with pytest.raises(TypeError):
+        is_parcel_accepted(100.5, 100)
+
+
+def test_boolean_weight_raises_type_error():
+
+    with pytest.raises(TypeError):
+        is_parcel_accepted(True, 100)
