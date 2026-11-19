@@ -28,14 +28,8 @@ jobs:
       - name: Install pytest-cov
         run: pip install pytest-cov
 
-      - name: Show test files
-         run: |
-           ls Tests
-
-      
-
       - name: Run tests with coverage
-        run: python -m pytest --cov=Src --cov-report=term-missing
+        run: python -m pytest Tests --cov=Src --cov-report=term-missing -v
   
   
   
