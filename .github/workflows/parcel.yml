@@ -29,7 +29,7 @@ jobs:
         run: pip install pytest-cov
 
       - name: Run tests with coverage
-        run: python -m pytest Tests --cov=Src --cov-report=term-missing -v
+        run: python -m pytest Tests --cov=src --cov-report=term-missing -v
   
   
   
