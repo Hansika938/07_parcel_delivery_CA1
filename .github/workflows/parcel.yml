@@ -28,13 +28,6 @@ jobs:
       - name: Install pytest-cov
         run: pip install pytest-cov
 
-
-      - name: Show project files
-        run: |
-          ls
-          ls tests
-          find .
-
       - name: Run pytest
         run: python -m pytest -v
 
