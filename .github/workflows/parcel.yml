@@ -5,9 +5,11 @@ on:
     branches:
       - main
 
-  paths:
+    paths:
       - 'src/**'
       - 'tests/**'
+  push branches:
+    - main
 jobs:
   tests:
     runs-on: ubuntu-latest
