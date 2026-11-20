@@ -4,77 +4,38 @@ from src.parcel_acceptance import is_parcel_accepted
 
 
 # Valid test cases
+@pytest.mark.parametrize("weight, length",
+                          [(1, 1),(20000,200),])
 
-def test_minimum_values_return_true():
-
-    result = is_parcel_accepted(1, 1)
-
-    assert result is True
-
-
-def test_maximum_values_return_true():
-
-    result = is_parcel_accepted(20000, 200)
-
-    assert result is True
+def test_valid_parcel_acceptance(weight, length):
+    result = is_parcel_accepted(weight, length)
+    assert result is True 
 
 # Return False test cases
+@pytest.mark.parametrize("weight, length",
+                         [(0,150),(150,0),(20001,150),(150,201),])
 
-def test_zero_weight_returns_false():
 
-    result = is_parcel_accepted(0, 100)
-
+def test_invalid_parcel_acceptance(weight, length):
+    result = is_parcel_accepted(weight, length)
     assert result is False
-
-
-def test_zero_length_returns_false():
-
-    result = is_parcel_accepted(100, 0)
-
-    assert result is False
-
-
-def test_weight_above_limit_returns_false():
-
-    result = is_parcel_accepted(20001, 100)
-
-    assert result is False
-
-
-def test_length_above_limit_returns_false():
-
-    result = is_parcel_accepted(100, 201)
-
-    assert result is False
+ 
 
 # ValueError test cases
 
-def test_negative_weight_raises_value_error():
+@pytest.mark.parametrize("weight, length",
+                          [(-1, 100),(100, -1),])
 
+def test_invalid_parcel_acceptance_raises_value_error(weight, length):
     with pytest.raises(ValueError):
-        is_parcel_accepted(-1, 100)
-
-
-def test_negative_length_raises_value_error():
-
-    with pytest.raises(ValueError):
-        is_parcel_accepted(100, -1)
+        is_parcel_accepted(weight, length)
 
 # TypeError test cases
+@pytest.mark.parametrize("weight, length",
+                            [("100", 100),(100, "100"),(100.5, 100),(100, 100.5),(True, 100),(100, True),])
 
-def test_string_weight_raises_type_error():
-
+def test_invalid_parcel_acceptance_raises_type_error(weight, length):
     with pytest.raises(TypeError):
-        is_parcel_accepted("100", 100)
+        is_parcel_accepted(weight, length)
 
 
-def test_float_weight_raises_type_error():
-
-    with pytest.raises(TypeError):
-        is_parcel_accepted(100.5, 100)
-
-
-def test_boolean_weight_raises_type_error():
-
-    with pytest.raises(TypeError):
-        is_parcel_accepted(True, 100)
