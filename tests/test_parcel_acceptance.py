@@ -24,7 +24,7 @@ def test_invalid_parcel_acceptance(weight, length):
 # ValueError test cases
 
 @pytest.mark.parametrize("weight, length",
-                          [(-1, 100),(100, -1),])
+                          [(-1, 150),(150, -1),])
 
 def test_invalid_parcel_acceptance_raises_value_error(weight, length):
     with pytest.raises(ValueError):
@@ -32,11 +32,11 @@ def test_invalid_parcel_acceptance_raises_value_error(weight, length):
 
 # TypeError test cases
 @pytest.mark.parametrize("weight, length",
-                            [("100", 100),(100, "100"),(100.5, 100),(100, 100.5),(True, 100),(100, True),])
+                            [("100", 150),(150, "150"),(100.5, 150),(150, 100.5),(True, 150),(150, True),])
 
 def test_invalid_parcel_acceptance_raises_type_error(weight, length):
     with pytest.raises(TypeError):
         is_parcel_accepted(weight, length)
-        
+
 
 
